@@ -11,7 +11,7 @@ class Mobile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          height: 200,
+          height: MediaQuery.of(context).size.height * 0.35,
           width: double.infinity,
           color: Colors.grey,
           child: const ImageContainer(),

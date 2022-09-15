@@ -12,7 +12,7 @@ class Desktop extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          width: size.width * 0.2,
+          width: size.width * 0.3,
           height: size.height,
           color: Colors.grey,
           child: const ImageContainer(),
