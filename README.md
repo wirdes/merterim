@@ -1,7 +1,7 @@
 # mert_erim_web
 
 A new Flutter project.
-- [Link to : ](https://www.merterim.com/#/)
+- [Link to project   ](https://www.merterim.com/#/)
 
 
 
