@@ -16,6 +16,7 @@ dependencies:
   flutter_markdown: ^0.6.12
   font_awesome_flutter: ^10.2.1
   url_launcher: ^6.1.5
+  firebase_core: ^2.8.0
 
 dev_dependencies:
   flutter_test:
