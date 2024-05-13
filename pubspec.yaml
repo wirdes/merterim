@@ -1,31 +1,29 @@
 name: mert_erim_web
 description: A new Flutter project.
-
 publish_to: "none"
-
 version: 1.0.0+1
-
 environment:
-  sdk: ">=2.17.5 <3.0.0"
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.2
-  flutter_markdown: ^0.6.12
-  font_awesome_flutter: ^10.2.1
-  url_launcher: ^6.1.5
+  provider: ^6.1.1
+  flutter_svg: ^2.0.9
+  url_launcher: ^6.2.6
+  http: ^1.0.0
   firebase_core: ^2.8.0
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.0
 flutter:
-  uses-material-design: true
 
+  uses-material-design: true
   assets:
     - assets/images/
-    - assets/markdowns/
+    - assets/svg/
+    - assets/w11/
+    - assets/cv/
