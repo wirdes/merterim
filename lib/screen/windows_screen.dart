@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 
@@ -148,7 +149,20 @@ class _WindowsScreenState extends State<WindowsScreen> {
                 child: Stack(
               children: [
                 const Center(
-                  child: Text("Developed in Flutter and being continued to be developed", style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500)),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 120),
+                    child: Text(
+                      "Developed in Flutter and being continued to be developed",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        shadows: [
+                          Shadow(color: Colors.black, blurRadius: 20)
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
                 widget.child,
                 Positioned(
@@ -157,7 +171,7 @@ class _WindowsScreenState extends State<WindowsScreen> {
                   right: 0,
                   child: SizedBox(
                     width: double.infinity,
-                    height: 500,
+                    height: MediaQuery.of(context).size.height,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -182,7 +196,7 @@ class _WindowsScreenState extends State<WindowsScreen> {
                             onTap: () async {
                               launchUrl(Uri.parse('https://merterim.dev/assets/assets/cv/cv.pdf'));
                             }),
-                        WindowsDesktopElement(title: 'Github Repo', image: const AssetImage('assets/w11/github-mark.png'), onTap: () => launchUrl(Uri.parse("https://github.com/wirdes"))),
+                        WindowsDesktopElement(title: 'Github', image: const AssetImage('assets/w11/github-mark.png'), onTap: () => launchUrl(Uri.parse("https://github.com/wirdes"))),
                       ],
                     ),
                   ),
@@ -271,6 +285,29 @@ class _WindowsScreenState extends State<WindowsScreen> {
                         ),
                       ),
                     ),
+                    const Spacer(),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {},
+                        customBorder: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(1),
+                          child: Row(
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8),
+                                child: Clock(),
+                              ),
+                              IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none_outlined, color: Colors.white)),
+                              const SizedBox(width: 16),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -278,6 +315,70 @@ class _WindowsScreenState extends State<WindowsScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Clock extends StatefulWidget {
+  const Clock({super.key});
+
+  @override
+  State<Clock> createState() => _ClockState();
+}
+
+class _ClockState extends State<Clock> {
+  DateTime _time = DateTime.now();
+
+  void _startTime() {
+    _upTime();
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      _upTime();
+    });
+  }
+
+  void _upTime() {
+    setState(() {
+      _time = DateTime.now();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _startTime();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          width: 80,
+          child: Row(
+            children: [
+              const Spacer(),
+              Text(
+                textAlign: TextAlign.left,
+                '${_time.hour.toString().padLeft(2, '0')}:${_time.minute.toString().padLeft(2, '0')}',
+                style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 80,
+          child: Row(
+            children: [
+              const Spacer(),
+              Text(
+                textAlign: TextAlign.left,
+                '${_time.day.toString().padLeft(2, '0')}.${_time.month.toString().padLeft(2, '0')}.${_time.year.toString().padLeft(2, '0')}',
+                style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -375,16 +476,17 @@ class WindowsDesktopElement extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
-              width: 56,
-              height: 56,
+              width: 72,
+              height: 94,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image(image: image, width: 32, height: 32),
+                  Image(image: image, width: 48, height: 48),
                   Text(
                     title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.w500),
+                    // maxLines: 1,
+                    // overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
