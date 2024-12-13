@@ -33,18 +33,16 @@
     <link rel="manifest" href="manifest.json" />
 
     <script>
-      var serviceWorkerVersion = null;
     </script>
     <script src="flutter.js" defer></script>
   </head>
   <body>
     <script>
       window.addEventListener("load", function (ev) {
-        // Download main.dart.js
         _flutter.loader
           .loadEntrypoint({
             serviceWorker: {
-              serviceWorkerVersion: serviceWorkerVersion,
+              serviceWorkerVersion: '{{flutter_service_worker_version}}',
             },
           })
           .then(function (engineInitializer) {

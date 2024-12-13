@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mert_erim_web/screen/windows_screen.dart';
+import 'package:mert_erim_web/screen/windows_screen/windows_screen.dart';
 import 'package:mert_erim_web/components/view_container.dart';
 import 'package:mert_erim_web/models/theme.dart';
 import 'package:provider/provider.dart';
@@ -19,9 +19,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => ThemeModel())
-      ],
+      providers: [ChangeNotifierProvider(create: (_) => ThemeModel())],
       child: Consumer<ThemeModel>(builder: (context, theme, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
