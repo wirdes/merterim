@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mert_erim_web/screen/components/windows_desktop_element.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -42,8 +43,12 @@ class DesktopElements extends StatelessWidget {
             title: 'CV indir',
             image: const AssetImage('assets/w11/pdf.png'),
             onTap: () async {
+              const url = kDebugMode
+                  ? 'http://localhost:8080/#/assets/assets/cv/cv-2.pdf'
+                  : 'https://merterim.dev/assets/assets/cv/cv-2.pdf';
               launchUrl(
-                  Uri.parse('https://merterim.dev/assets/assets/cv/cv.pdf'));
+                Uri.parse(url),
+              );
             },
           ),
           WindowsDesktopElement(
